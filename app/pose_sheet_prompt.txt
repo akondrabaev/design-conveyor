@@ -1,0 +1,64 @@
+Create a high-quality professional e-commerce pose reference sheet for AI-generated product photography.
+
+**CANVAS AND LAYOUT**
+- One single image, landscape format, 5 columns × 2 rows = exactly 10 individual reference images.
+- Pure white background (#FFFFFF).
+- Thin light-gray grid lines separating all 10 cells.
+- Equal cell sizes, consistent margins and spacing.
+- Each cell must contain exactly one model pose.
+- No text, labels, numbers, logos, watermarks, borders around individual models, or decorative elements.
+- High resolution, sharp details, clean silhouettes, professional studio lighting.
+- The image must be easy to crop into 10 separate reference images.
+
+**MODEL REQUIREMENTS**
+- {body}
+- Completely faceless, featureless mannequin head: smooth blank surface, no eyes, nose, mouth, ears, hair, or facial details.
+- Gender-neutral, non-identifiable facial area.
+- Natural realistic anatomy, average athletic build.
+- Neutral posture, realistic proportions, relaxed hands and fingers.
+- {suit}
+- Non-sexualized commercial catalog photography.
+- The model should resemble a realistic 3D studio mannequin rather than a stylized character.
+- Identical model proportions and appearance across all 10 images.
+
+**THE 10 POSES — LEFT TO RIGHT, TOP TO BOTTOM**
+
+1. **Front view:** Full body, facing directly toward the camera, feet shoulder-width apart, arms relaxed slightly away from the torso. Neutral symmetrical stance.
+
+2. **Back view:** Full body, facing directly away from the camera. Arms relaxed, showing the back silhouette and rear swimsuit construction.
+
+3. **Front three-quarter view, left:** Full body, body rotated approximately 45 degrees so that the model's LEFT side is turned toward the camera (the head points toward the left edge of the cell), head aligned naturally with the torso.
+
+4. **Front three-quarter view, right:** Full body, body rotated approximately 45 degrees so that the model's RIGHT side is turned toward the camera (the head points toward the right edge of the cell).
+
+5. **Side profile:** Full body, exact 90-degree side view, the model's LEFT side toward the camera, facing the left edge of the cell, standing straight with arms relaxed. Clear body silhouette.
+
+6. **Back three-quarter view:** Full body, body rotated approximately 45 degrees away from the camera, showing the rear and the model's LEFT side silhouette.
+
+7. **Walking pose:** Full body, one foot slightly forward in a natural walking step, arms moving subtly and naturally. No exaggerated movement.
+
+8. **Product-display stance:** Full body, front-facing, arms slightly extended away from the waist and hips to clearly reveal the swimsuit silhouette and garment fit.
+
+9. **Upper-body front close-up:** Framed from the upper chest to the top of the head, facing directly toward the camera. Clear view of the head, neck, shoulders, and upper torso. Suitable for swimming goggles and swimming cap product photography.
+
+10. **Head profile close-up:** Framed from the upper shoulders to the top of the head, exact side profile, the model's LEFT side toward the camera, facing the left edge of the cell. Smooth blank head with clearly visible forehead, nose-free facial silhouette, back of head, and neck contours. Suitable for swimming cap placement and swimming goggle positioning.
+
+**CAMERA AND LIGHTING**
+- Professional online marketplace product photography.
+- Eye-level camera for standing poses.
+- Straight, undistorted perspective; avoid wide-angle distortion.
+- Full-body images must show the entire model, including feet.
+- Consistent camera distance and lighting across comparable poses.
+- Soft, even studio lighting with minimal shadows.
+- Pure white seamless background.
+- High clarity and realistic material rendering.
+
+**STRICT RULES**
+- Exactly 10 cells, arranged in 5 columns and 2 rows.
+- No duplicated poses.
+- No extra models, limbs, fingers, or body parts.
+- No cropped heads or feet in full-body images.
+- No facial features whatsoever.
+- No text or graphics.
+- Keep every pose centered inside its own cell with sufficient white space for cropping.
+- Prioritize clean pose silhouettes and practical utility as AI image-generation references.

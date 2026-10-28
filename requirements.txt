@@ -1,0 +1,13 @@
+google-genai
+numpy
+pillow
+opencv-python-headless
+scipy
+shapely
+cairosvg
+potracer
+resvg-py
+fastapi
+uvicorn
+python-multipart
+openpyxl

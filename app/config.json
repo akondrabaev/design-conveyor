@@ -1,0 +1,290 @@
+{
+ "groups": [
+  {
+   "id": "woman",
+   "label": "Женщины",
+   "body": "Adult female body proportions.",
+   "suit": "Modest, plain, solid-color one-piece swimsuit without logos, patterns, or accessories."
+  },
+  {
+   "id": "man",
+   "label": "Мужчины",
+   "body": "Adult male body proportions.",
+   "suit": "Plain solid-color swim jammers without logos, patterns, or accessories."
+  },
+  {
+   "id": "girl",
+   "label": "Девочки",
+   "body": "Child body proportions, a girl about 8 years old.",
+   "suit": "Modest, plain, solid-color kids' one-piece swimsuit without logos, patterns, or accessories."
+  },
+  {
+   "id": "boy",
+   "label": "Мальчики",
+   "body": "Child body proportions, a boy about 8 years old.",
+   "suit": "Plain solid-color kids' rash guard swim shirt and swim shorts without logos, patterns, or accessories."
+  }
+ ],
+ "personas": [
+  {
+   "id": "woman1",
+   "group": "woman",
+   "label": "Женщина 1",
+   "name": "Анна",
+   "look": "a Slavic woman, about 28 years old, long chestnut hair, hazel eyes, fair skin with a few light freckles, slim athletic build",
+   "wear": "a dark navy one-piece sports swimsuit"
+  },
+  {
+   "id": "woman2",
+   "group": "woman",
+   "label": "Женщина 2",
+   "name": "Вика",
+   "look": "a woman about 38 years old, short platinum-blonde bob, blue eyes, fair skin, fit toned build, warm confident expression",
+   "wear": "a black one-piece sports swimsuit"
+  },
+  {
+   "id": "man1",
+   "group": "man",
+   "label": "Мужчина 1",
+   "name": "Максим",
+   "look": "an athletic Slavic man, about 30 years old, short dark-blond hair, light stubble, grey-blue eyes, fair skin, lean swimmer build",
+   "wear": "black swim jammers"
+  },
+  {
+   "id": "man2",
+   "group": "man",
+   "label": "Мужчина 2",
+   "name": "Артём",
+   "look": "a man about 40 years old, short dark-brown hair with a little grey at the temples, brown eyes, light olive skin, neatly trimmed short beard, broad-shouldered fit build",
+   "wear": "navy swim jammers"
+  },
+  {
+   "id": "girl1",
+   "group": "girl",
+   "label": "Девочка 1",
+   "name": "Соня",
+   "look": "a cheerful Slavic girl about 7 years old, long light-blond hair, green eyes, friendly smile",
+   "wear": "a turquoise kids' one-piece swimsuit"
+  },
+  {
+   "id": "girl2",
+   "group": "girl",
+   "label": "Девочка 2",
+   "name": "Лиза",
+   "look": "a cheerful girl about 10 years old, long dark-brown hair, brown eyes, light freckles on the nose, friendly smile",
+   "wear": "a coral kids' one-piece swimsuit"
+  },
+  {
+   "id": "boy1",
+   "group": "boy",
+   "label": "Мальчик 1",
+   "name": "Миша",
+   "look": "a cheerful Slavic boy about 7 years old, short light-brown hair, blue eyes, friendly smile",
+   "wear": "a navy kids' rash guard swim shirt and swim shorts"
+  },
+  {
+   "id": "boy2",
+   "group": "boy",
+   "label": "Мальчик 2",
+   "name": "Тимур",
+   "look": "a cheerful boy about 10 years old, short dark curly hair, dark-brown eyes, light olive skin, friendly smile",
+   "wear": "a dark green kids' rash guard swim shirt and swim shorts"
+  }
+ ],
+ "poses": [
+  {
+   "id": "front",
+   "cell": 1,
+   "yaw": 0,
+   "label": "Анфас, в полный рост",
+   "prompt": "full body, facing the camera"
+  },
+  {
+   "id": "back",
+   "cell": 2,
+   "yaw": 180,
+   "label": "Сзади, в полный рост",
+   "prompt": "full body, seen from directly behind"
+  },
+  {
+   "id": "q_left",
+   "cell": 3,
+   "yaw": -45,
+   "label": "3/4, левая сторона",
+   "prompt": "full body, three-quarter view, the person's LEFT side turned toward the camera"
+  },
+  {
+   "id": "q_right",
+   "cell": 4,
+   "yaw": 45,
+   "label": "3/4, правая сторона",
+   "prompt": "full body, three-quarter view, the person's RIGHT side turned toward the camera"
+  },
+  {
+   "id": "profile_left",
+   "cell": 5,
+   "yaw": -90,
+   "label": "Профиль слева (лого)",
+   "prompt": "full body, exact side profile, the person's LEFT side toward the camera, face pointing to the left edge of the frame"
+  },
+  {
+   "id": "back_q",
+   "cell": 6,
+   "yaw": -135,
+   "label": "Сзади 3/4, левая",
+   "prompt": "full body, back three-quarter view, the back and the LEFT side of the head visible"
+  },
+  {
+   "id": "walk",
+   "cell": 7,
+   "yaw": 0,
+   "label": "Шаг",
+   "prompt": "full body, natural walking step toward the camera"
+  },
+  {
+   "id": "display",
+   "cell": 8,
+   "yaw": 0,
+   "label": "Стойка-презентация",
+   "prompt": "full body, front-facing product-display stance"
+  },
+  {
+   "id": "close_front",
+   "cell": 9,
+   "yaw": 0,
+   "elev": 14,
+   "label": "Крупно анфас",
+   "prompt": "upper-body close-up from the upper chest to the top of the head, facing the camera"
+  },
+  {
+   "id": "close_left",
+   "cell": 10,
+   "yaw": -90,
+   "elev": 8,
+   "label": "Крупно профиль слева (лого)",
+   "prompt": "head-and-shoulders close-up, exact side profile, the person's LEFT side toward the camera, face pointing to the left edge of the frame"
+  },
+  {
+   "id": "profile_right",
+   "cell": 5,
+   "mirror": true,
+   "yaw": 90,
+   "label": "Профиль справа",
+   "prompt": "full body, exact side profile, the person's RIGHT side toward the camera, face pointing to the right edge of the frame"
+  },
+  {
+   "id": "close_right",
+   "cell": 10,
+   "mirror": true,
+   "yaw": 90,
+   "elev": 8,
+   "label": "Крупно профиль справа",
+   "prompt": "head-and-shoulders close-up, exact side profile, the person's RIGHT side toward the camera, face pointing to the right edge of the frame"
+  },
+  {
+   "id": "putting_on",
+   "hands": true,
+   "on_head": true,
+   "guide": "q_left",
+   "refs": [
+    "puton_1.jpg",
+    "puton_2.jpg"
+   ],
+   "label": "Надевает / поправляет шапочку",
+   "prompt": "the cap is already on the head, fitted neatly and smoothly; the person gently pulls the cap's rim down at the side of the head near the ear with the fingers of one hand, as if adjusting the fit; three-quarter view with the person's LEFT side toward the camera; face visible with a relaxed smile; head-and-shoulders framing",
+   "qa": "the cap sits neatly on the head and the fingers pull its rim near the ear"
+  },
+  {
+   "id": "stretch_face",
+   "hands": true,
+   "refs": [
+    "stretch_1.jpg",
+    "stretch_5.jpg",
+    "stretch_4.jpg"
+   ],
+   "label": "Растягивает шапочку (с лицом)",
+   "prompt": "the person faces the camera and, at chest height, holds the cap FLAT (both layers together, as it lies flat) by its two ends and pulls it apart sideways: the cap becomes smoothly longer and narrower with soft tension folds along it; the printed LEFT side with the BRAND logo faces the camera; face visible with a smile; framing from the waist up",
+   "qa": "the flat cap is held by its two ends and visibly pulled longer and narrower"
+  },
+  {
+   "id": "stretch_hands",
+   "hands": true,
+   "refs": [
+    "stretch_3.jpg",
+    "stretch_2.jpg",
+    "stretch_4.jpg"
+   ],
+   "label": "Растягивает шапочку (только руки)",
+   "prompt": "close-up of two hands holding the cap FLAT by its ends and pulling it apart diagonally: the cap is smoothly elongated with soft tension folds; the printed LEFT side with the BRAND logo faces the camera; the face is NOT in the frame (crop at the chin or neck)",
+   "qa": "two hands pull the flat cap diagonally so it is visibly elongated"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "studio",
+   "label": "Студия (белый фон)",
+   "prompt": "pure white seamless studio background, soft even studio light, marketplace catalogue style",
+   "surface": "a clean white seamless surface"
+  },
+  {
+   "id": "pool_indoor",
+   "label": "Крытый бассейн",
+   "prompt": "a bright indoor swimming pool with lane ropes and daylight from large windows",
+   "surface": "wet light-blue mosaic tiles at the edge of an indoor pool"
+  },
+  {
+   "id": "pool_outdoor",
+   "label": "Открытый бассейн",
+   "prompt": "an outdoor pool on a sunny day, clear blue water, soft palm shadows",
+   "surface": "sunlit wet poolside mosaic tiles with the pool water in the background"
+  },
+  {
+   "id": "open_water",
+   "label": "Открытая вода",
+   "prompt": "open water: a calm sea or lake with a natural horizon, golden morning light",
+   "surface": "smooth wet pebbles by the sea"
+  },
+  {
+   "id": "locker",
+   "label": "Раздевалка",
+   "prompt": "a clean modern locker room with light wood benches and lockers",
+   "surface": "a light wooden locker-room bench"
+  },
+  {
+   "id": "competition",
+   "label": "Соревнования",
+   "prompt": "a competition pool with starting blocks, focused atmosphere",
+   "surface": "the top of a starting block by a competition pool"
+  },
+  {
+   "id": "lesson",
+   "label": "Детская тренировка",
+   "prompt": "a kids' swimming lesson by a shallow pool, colourful floats blurred in the background",
+   "surface": "a poolside edge with colourful kickboards blurred in the background"
+  }
+ ],
+ "image_size": "2K",
+ "product_poses": [
+  {
+   "id": "flat_lay",
+   "label": "Лежит ровно",
+   "prompt": "the cap lies flat on the surface, seen from above at a slight angle, the printed LEFT side with the BRAND logo facing up, natural soft shadow"
+  },
+  {
+   "id": "folded",
+   "label": "Небрежно сложилась",
+   "prompt": "the cap was casually put down and is slightly folded and crumpled on itself, as a real soft silicone cap behaves, the print and BRAND logo still clearly visible, natural shadows"
+  },
+  {
+   "id": "splash",
+   "label": "С брызгами",
+   "prompt": "the cap lies on the surface with fresh water droplets and splashes on it and around it, glossy wet silicone, the printed LEFT side with the BRAND logo facing up"
+  },
+  {
+   "id": "both_sides",
+   "label": "Две стороны",
+   "prompt": "two identical caps side by side lying flat: one shows the LEFT side (with the BRAND logo, Image 1), the other is flipped and shows the RIGHT side (Image 2)"
+  }
+ ],
+ "storage_limit_gb": 5
+}

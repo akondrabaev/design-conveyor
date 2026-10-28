@@ -1,0 +1,20 @@
+# secrets
+.env
+# local environment
+.venv/
+__pycache__/
+*.pyc
+# generated data (created at runtime)
+designs/
+packs/
+personas/
+poses/
+on_model/
+uploads/
+trials/
+# optional private assets (see app/assets/README.md)
+app/assets/**/*.png
+app/assets/**/*.jpg
+app/assets/**/*.jpeg
+app/assets/**/*.webp
+lib/shape_src/

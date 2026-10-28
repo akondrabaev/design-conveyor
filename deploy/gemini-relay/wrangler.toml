@@ -1,0 +1,10 @@
+name = "gemini-relay"
+main = "worker.js"
+compatibility_date = "2025-06-01"
+
+# Run the worker close to Google, not close to the client: otherwise the request to Gemini
+# leaves Cloudflare in an unsupported region and Google may refuse it by location. Check with GET /__where.
+[placement]
+mode = "smart"
+
+# Secret: wrangler secret put RELAY_SECRET

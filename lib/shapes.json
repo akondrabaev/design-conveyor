@@ -1,0 +1,36 @@
+{
+ "kid_horns": {
+  "offset": [
+   88.1,
+   12.67
+  ],
+  "source": "shape_src/kid_horns.png"
+ },
+ "kid_cat": {
+  "offset": [
+   12.03,
+   76.21
+  ],
+  "source": "shape_src/kid_cat.png"
+ },
+ "kid_bear": {
+  "offset": [
+   11.49,
+   54.0
+  ]
+ },
+ "kid_fish": {
+  "offset": [
+   12.0,
+   55.49
+  ],
+  "source": "shape_src/kid_fish.png"
+ },
+ "kid_dragon": {
+  "offset": [
+   12.0,
+   120.63
+  ],
+  "source": "shape_src/kid_dragon.png"
+ }
+}

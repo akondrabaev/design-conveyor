@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Conveyor</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span id="brandName">BRAND</span><span>design conveyor</span></div>
+  <nav>
+    <button data-tab="designs" class="on">1. Новинки</button>
+    <button data-tab="personas">2. Модели и ракурсы</button>
+    <button data-tab="cards">3. Фото на моделях</button>
+    <button data-tab="constructor">4. Конструктор</button>
+    <button data-tab="export">5. Выгрузка</button>
+  </nav>
+  <button class="btn sm jobs-btn" id="storageBtn" title="Занято на диске: дизайны, модели, ракурсы, фотосессии">…</button>
+  <button class="btn sm" id="jobsBtn" style="margin-left:8px">Задачи <span id="jobsCount"></span></button>
+</header>
+
+<main>
+  <div id="keyBanner" class="banner hide">Не найден GEMINI_API_KEY: положите его в <code>.env</code> (или <code>.env.example</code>) и перезапустите сервер.</div>
+
+  <!-- ===== Pipeline 1 ===== -->
+  <section id="tab-designs" class="stack">
+    <div class="panel stack">
+      <h2>Новый дизайн шапочки</h2>
+      <p class="muted small">Gemini придумывает концепцию и палитру (≤3 краски с RAL), рисует принт, движок сводит к краскам, режет трафареты, собирает раскладку, мокап и ТЗ. 1–3 минуты.</p>
+      <label class="f">Тема (лучше по-английски, можно по-русски)
+        <textarea id="dTheme" rows="2" placeholder="turtles playing football underwater, for boys"></textarea>
+      </label>
+      <div class="stack">
+        <div class="row"><span class="small muted grow">Референсы — что примерно имеется в виду (персонаж, стиль, настроение, цвета). Gemini берёт идею, не копирует. До 4 картинок; можно вставить из буфера (Ctrl+V).</span>
+          <label class="btn sm">+ референс<input type="file" id="dRefFile" accept="image/*" multiple hidden></label></div>
+        <div class="row" id="dRefs"></div>
+      </div>
+      <div class="row">
+        <label class="f">Пресет сегмента
+          <select id="dPreset">
+            <option value="kids">Детская</option>
+            <option value="unisex_sport">Унисекс-спорт</option>
+            <option value="female">Женская (длинная)</option>
+            <option value="free">Свободно</option>
+          </select>
+        </label>
+        <label class="f">Форма шапочки
+          <select id="dShape"><option value="">по сегменту (стандартная / длинная)</option></select>
+        </label>
+        <label class="f hide" id="dPuBox">Принт PU
+          <select id="dPu"><option value="placement">персонаж с логотипом</option><option value="allover">на всю шапочку</option></select>
+        </label>
+        <label class="f hide" id="dLogoBox">Логотип
+          <select id="dLogo"><option value="small">маленький логотип</option><option value="styled">в стиле рисунка</option><option value="none">без логотипа</option></select>
+        </label>
+        <label class="f">Slug (латиница, необязательно)
+          <input type="text" id="dSlug" placeholder="kids_turtle_football">
+        </label>
+        <label class="f">Стороны
+          <select id="dSides"><option value="A">Одна (A — левая, с логотипом)</option><option value="ABm">Две, симметрично (B = зеркало A)</option><option value="AB">Две, B — свой рисунок</option></select>
+        </label>
+        <div class="grow"></div>
+        <button class="btn primary" id="dGo">Сгенерировать дизайн</button>
+      </div>
+      <div id="dJob"></div>
+    </div>
+    <div class="row"><h2 class="grow">Каталог дизайнов</h2><button class="btn sm" id="dReload">Обновить</button></div>
+    <div class="grid" id="designGrid"></div>
+  </section>
+
+  <!-- ===== Personas + poses ===== -->
+  <section id="tab-personas" class="stack hide">
+    <div class="panel">
+      <h2>Постоянные ИИ-модели</h2>
+      <p class="muted small">По две модели в каждой группе. Эталон (анфас + профиль) создаётся один раз и передаётся в каждую генерацию как референс лица. Можно загрузить фото реальной модели (с её согласия).</p>
+    </div>
+    <div id="personaGroups" class="stack"></div>
+    <div class="panel">
+      <h2>Листы ракурсов</h2>
+      <p class="muted small">Безликий манекен, 10 поз (5×2), нарезается на отдельные референсы позы. Профили сняты левой стороной к камере — это сторона с логотипом; правые профили получаются зеркалом.</p>
+    </div>
+    <div id="poseSheets" class="stack"></div>
+  </section>
+
+  <!-- ===== Pipeline 2 ===== -->
+  <section id="tab-constructor" class="hide">
+    <div>
+      <div class="panel">
+        <div class="step"><div class="n">1</div><div class="stack">
+          <h3>Трафареты из каталога</h3>
+          <div class="row"><p class="muted small grow" style="margin:0">Рисунок (трафареты) берётся из готового дизайна. Меняются форма шапочки и цвета, рисунок остаётся тем же.</p>
+            <label class="btn sm primary" title="Своя картинка без ИИ: используется как есть, белый фон вырезается">+ Свой принт (PU)<input type="file" id="cUpload" accept="image/*" hidden></label></div>
+          <div class="pick" id="cSources" style="max-height:330px;overflow:auto;padding-right:4px"></div>
+        </div></div>
+        <div class="step"><div class="n">2</div><div class="stack">
+          <h3>Форма и стороны</h3>
+          <div class="row">
+            <label class="f">Форма шапочки<select id="cShape"></select></label>
+            <div class="hide stack" id="cPlaceBox" style="min-width:320px">
+              <div class="small muted">Положение принта PU — ползунки или перетащите принт мышью на превью основной колорамы</div>
+              <label class="row small"><span style="width:70px">Размер</span><input type="range" id="cS" min="30" max="160" value="100" class="grow"><span id="cSv" style="width:44px">100%</span></label>
+              <label class="row small"><span style="width:70px">Вправо</span><input type="range" id="cX" min="-45" max="45" value="0" class="grow"><span id="cXv" style="width:44px">0%</span></label>
+              <label class="row small"><span style="width:70px">Вниз</span><input type="range" id="cY" min="-45" max="45" value="0" class="grow"><span id="cYv" style="width:44px">0%</span></label>
+              <div><button class="btn sm" id="cPlaceReset">Сбросить</button></div>
+              <div class="row small" style="margin-top:6px"><b>Логотип</b>
+                <select id="cLogo"><option value="none">без логотипа</option><option value="adult">логотип (слово)</option><option value="kids">логотип с волной</option><option value="styled">стилизованный под принт (ИИ)</option></select>
+                <button class="btn sm" id="cLogoColour"></button>
+                <button class="btn sm primary hide" id="cLogoGen">Сгенерировать</button>
+                <img id="cLogoImg" class="hide" style="height:28px;border-radius:4px;background:#ddd">
+                <span class="muted">тянуть мышью:</span>
+                <label><input type="radio" name="cDrag" value="print" checked> принт</label><label><input type="radio" name="cDrag" value="logo"> логотип</label></div>
+              <label class="row small" id="cLogoS"><span style="width:70px">Лого размер</span><input type="range" id="cLs" min="5" max="60" value="20" class="grow"><span id="cLsv" style="width:44px">20%</span></label>
+            </div>
+            <label class="f" id="cSidesBox">Стороны<select id="cSides">
+              <option value="mirror">Две, симметрично (B = зеркало A)</option>
+              <option value="A">Одна (A, слева)</option>
+              <option value="AB">Две, свой рисунок B (если есть у источника)</option></select></label>
+          </div>
+        </div></div>
+        <div class="step"><div class="n">3</div><div class="stack">
+          <div class="row"><h3 class="grow">Колорамы <span class="muted small" id="cPrevState"></span></h3><button class="btn sm" id="cAddWay">+ цвет шапочки</button></div>
+          <p class="muted small">Клик по образцу — выбор цвета RAL. У каждого цвета шапочки свои краски: трафареты те же. ⚠ — краска плохо видна на шапочке (ΔE &lt; 30).</p>
+          <div id="cWays" class="stack"></div>
+        </div></div>
+        <div class="step"><div class="n">4</div><div class="stack">
+          <div class="row">
+            <label class="f grow">Название модели<input type="text" id="cName" placeholder="по умолчанию: название источника · RAL шапочки"></label>
+            <label class="f">Slug (латиница)<input type="text" id="cSlug" placeholder="авто"></label>
+          </div>
+          <div class="row"><div class="grow"></div><button class="btn primary" id="cSave">Сохранить модель (трафареты, мокап, ТЗ)</button></div>
+          <div id="cJob"></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-export" class="stack hide">
+    <div class="panel stack">
+      <h2>Выгрузка мокапов в Excel</h2>
+      <p class="muted small">Одна строка Excel = один цвет шапочки с принтом (основной и варианты), картинка в высоком разрешении — в Excel её можно растянуть. «Сохранить как…» — выберите папку: в корне Excel, по папке на модель с мокапом, ТЗ, трафаретами SVG/PNG и картинками колорам.</p>
+      <div class="row">
+        <label class="f">Тип<select id="eType"><option value="">все</option></select></label>
+        <button class="btn sm" id="eAll">Выбрать все</button>
+        <button class="btn sm" id="eNone">Снять все</button>
+        <div class="grow"></div>
+        <span class="small muted" id="eCount"></span>
+        <button class="btn" id="eGo">Скачать Excel</button>
+        <button class="btn primary" id="eSave">Сохранить как… (папка с моделями)</button>
+      </div>
+    </div>
+    <div class="grid" id="eGrid"></div>
+  </section>
+
+  <section id="tab-cards" class="hide">
+    <div id="builder" class="layout2">
+      <div class="panel">
+        <div class="step"><div class="n">1</div><div class="stack">
+          <h3>Дизайн шапочки</h3>
+          <div class="pick" id="bDesigns"></div>
+          <div class="small" id="bSides"></div>
+        </div></div>
+
+        <div class="step"><div class="n">2</div><div class="stack">
+          <h3>Модели</h3>
+          <div id="bPersonas" class="stack"></div>
+        </div></div>
+
+        <div class="step"><div class="n">3</div><div class="stack">
+          <div class="row"><h3 class="grow">Ракурсы: шапочка на голове</h3><span class="muted small">слева поза, справа — как ляжет принт при этом повороте головы</span></div>
+          <div class="poses" id="bPoses"></div>
+          <h3>Модель тянет шапочку</h3>
+          <div class="tiles" id="bHands"></div>
+        </div></div>
+
+        <div class="step"><div class="n">4</div><div class="stack">
+          <h3>Сцены <span class="muted small">для предметной съёмки — поверхность</span></h3>
+          <div class="chips" id="bScenes"></div>
+        </div></div>
+
+        <div class="step"><div class="n">5</div><div class="stack">
+          <h3>Предметная съёмка на поверхности (без модели)</h3>
+          <div class="tiles" id="bProduct"></div>
+        </div></div>
+
+        <div class="step"><div class="n">6</div><div class="stack">
+          <div class="row"><h3 class="grow">Кадры <span class="muted small" id="bShotCount"></span></h3>
+            <span class="muted small">модель × ракурс, сцены по кругу — можно поправить</span></div>
+          <table class="t" id="bShots"></table>
+          <div class="row"><div class="grow"></div><button class="btn primary" id="bGo">Сгенерировать фото</button></div>
+        </div></div>
+      </div>
+
+      <div class="stack">
+        <div class="panel stack">
+          <h3>Итого</h3>
+          <div id="bSummary" class="small"></div>
+        </div>
+        <div class="panel stack">
+          <h3>Готовые фотосессии</h3>
+          <div id="packList" class="stack small"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="packView" class="hide stack"></div>
+  </section>
+</main>
+
+<div id="drawer"><div class="row"><h3 class="grow">Задачи</h3><button class="btn sm ghost" id="drawerClose">✕</button></div><div id="jobList"></div></div>
+<div id="modal"><div class="box" id="modalBox"></div></div>
+<div id="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
